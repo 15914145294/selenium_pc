@@ -1,0 +1,58 @@
+# 执行powershell 脚本
+#such as : %SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe  checkport.psl
+
+
+function checkPid($result,$port){
+    $port = $port.split(":")[1]
+    if(($result.split())[6].split(":")[($result.split())[6].split(":").Count-1] -eq $port){
+	# get the pid whick check point to port
+        $tPid = ($result.split())[($result.split()).count-1] 
+        if($tPid -ne "0"){
+		# to print the remation and set color
+            Write-Host "您查询的端口被以下程序占用：" -ForegroundColor Red
+            $target = tasklist|findstr $tPid
+            Write-Host $target
+            $sig = $true
+        }else{
+            $sig = $false
+        } 
+    }else{
+        $sig = $false
+    }
+	# return the sig
+    $sig
+}
+function checkPort($port){
+    $port = ":" + $port
+    $results = netstat -ano|findstr $port
+    if($results.count -gt 0){
+        if($results.count -eq 1){
+            $sig = checkPid $results $port
+            if($sig -eq $false){
+                Write-Host "您所查询的端口未被占用！" -ForegroundColor Green
+            }
+        }else{
+            foreach($result in $results){
+                if($result){
+                   $sig = checkPid $result $port
+                   if($sig -eq $true){
+                       break
+                   }
+                }
+            }
+            if($sig -eq $false){
+                Write-Host "您所查询的端口未被占用！" -ForegroundColor Green        
+            }
+        }
+    }else{
+        Write-Host "您所查询的端口未被占用！" -ForegroundColor Green
+    }
+}
+$port = $null
+while($port -ne "exit()"){
+    $port = Read-Host "请输入要查询的端口号"
+    if($port -eq "exit()"){
+        break
+    }
+    checkPort $port
+}
