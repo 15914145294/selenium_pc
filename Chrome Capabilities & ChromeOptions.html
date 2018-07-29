@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://www.cnblogs.com/zhang-pengcheng/p/6081007.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="origin">
+<title>Chrome Capabilities &amp; ChromeOptions - aprial - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./Chrome Capabilities &amp; ChromeOptions_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./Chrome Capabilities &amp; ChromeOptions_files/bundle-summerGarden.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./Chrome Capabilities &amp; ChromeOptions_files/bundle-summerGarden-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/zhang-pengcheng/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/zhang-pengcheng/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/zhang-pengcheng/wlwmanifest.xml">
+<script async="" src="https://www.google-analytics.com/analytics.js"></script><script src="./Chrome Capabilities &amp; ChromeOptions_files/jquery-2.2.0.min.js.下载"></script>
+<script type="text/javascript">var currentBlogApp = 'zhang-pengcheng', cb_enable_mathjax=true;var isLogined=true;</script>
+<script type="text/x-mathjax-config;executed=true">
+    MathJax.Hub.Config({
+        tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processClass: 'blogpost-body', processEscapes: true },
+        TeX: { 
+            equationNumbers: { autoNumber: ['AMS'], useLabelIds: true }, extensions: ['extpfeil.js'] },
+            'HTML-CSS': { linebreaks: { automatic: true } },
+            SVG: { linebreaks: { automatic: true } }
+        });
+    </script><script src="./Chrome Capabilities &amp; ChromeOptions_files/MathJax.js.下载"></script>
+<script src="./Chrome Capabilities &amp; ChromeOptions_files/blog-common.js.下载" type="text/javascript"></script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/zhang-pengcheng/"><img id="blogLogo" src="./Chrome Capabilities &amp; ChromeOptions_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/zhang-pengcheng/">aprial2011</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+	<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+	<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/zhang-pengcheng/">首页</a></li>
+	<li><a href="http://news.cnblogs.com/">新闻</a></li>
+	<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+	<li></li>
+	<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+	<li>
+	</li>
+</ul>
+
+
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<!--done-->
+随笔- 187&nbsp;
+文章- 1&nbsp;
+评论- 4&nbsp;
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/zhang-pengcheng/p/6081007.html">Chrome Capabilities &amp; ChromeOptions</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><ul>   <li>        </li>    <li>     <p>Capabilities &amp; ChromeOptions</p>   </li>    <li>     <p><a href="http://sites.google.com/a/chromium.org/chromedriver/extensions"><b>Chrome</b> Extensions</a></p>   </li>    <li>     <p><a href="http://sites.google.com/a/chromium.org/chromedriver/contributing">Contributing</a></p>   </li>    <li>     <p><a href="http://sites.google.com/a/chromium.org/chromedriver/downloads">Downloads</a></p>   </li>    <li>     <p><a href="http://sites.google.com/a/chromium.org/chromedriver/getting-started">Getting started</a></p>      <ul>       <li>         <p><a href="http://sites.google.com/a/chromium.org/chromedriver/getting-started/getting-started---android">Android</a></p>       </li>        <li>         <p><a href="http://sites.google.com/a/chromium.org/chromedriver/getting-started/chromeos">ChromeOS</a></p>       </li>     </ul>   </li>    <li>     <p><a href="http://sites.google.com/a/chromium.org/chromedriver/logging">Logging</a></p>      <ul>       <li>         <p><a href="http://sites.google.com/a/chromium.org/chromedriver/logging/performance-log">Performance Log</a></p>       </li>     </ul>   </li>    <li>     <p><a href="http://sites.google.com/a/chromium.org/chromedriver/mobile-emulation">Mobile Emulation</a></p>   </li>    <li>     <p><a href="http://sites.google.com/a/chromium.org/chromedriver/help">Need help?</a></p>      <ul>       <li>         <p><a href="http://sites.google.com/a/chromium.org/chromedriver/help/chrome-doesn-t-start"><b>Chrome</b> doesn't start or crashes immediately</a></p>       </li>        <li>         <p><a href="http://sites.google.com/a/chromium.org/chromedriver/help/chromedriver-crashes">ChromeDriver crashes</a></p>       </li>        <li>         <p><a href="http://sites.google.com/a/chromium.org/chromedriver/help/clicking-issues">Clicking issues</a></p>       </li>        <li>         <p><a href="http://sites.google.com/a/chromium.org/chromedriver/help/devtools-window-keeps-closing">DevTools window keeps closing</a></p>       </li>        <li>         <p><a href="http://sites.google.com/a/chromium.org/chromedriver/help/operation-not-supported-when-using-remote-debugging">Operation not supported when using remote debugging</a></p>       </li>     </ul>   </li> </ul>  <h5>Capabilities &amp; ChromeOptions</h5>  <p>Capabilities are <a name="baidusnap1"></a><b>options</b> that you can use to customize and configure a ChromeDriver session. This page documents all ChromeDriver supported capabilities and how to use them.</p>  <p>There are two ways to specify capabilities.&nbsp; </p>  <ol>   <li>The first is to use the <code>ChromeOptions</code> class.&nbsp; </li>    <li>If your client library does not have a <code>ChromeOptions</code> class (like the selenium ruby client), you can specify the capabilities directly as part of the <code>DesiredCapabilities</code>.</li> </ol>  <h4><a name="TOC-Using-the-ChromeOptions-class"></a>Using the ChromeOptions class</h4> You can create an instance of <code>ChromeOptions</code>, which has convenient methods for setting ChromeDriver-specific capabilities. You can pass the <code>ChromeOptions</code> object directly into the ChromeDriver constructor:  <pre>ChromeOptions <b>options</b> = new ChromeOptions();
+<b>options</b>.addExtensions(new File("/path/to/extension.crx"));
+ChromeDriver driver = new ChromeDriver(<b>options</b>);</pre>
+
+<p>Alternatively, you can add the <b>options</b> to an already existing <code>DesiredCapabilities</code> object, which is useful when need to specify other WebDriver capabilities not specific to ChromeDriver.</p>
+
+<pre>DesiredCapabilities capabilities = DesiredCapabilities.<b>chrome</b>();</pre>
+
+<pre>// Add the WebDriver proxy capability.
+Proxy proxy = new Proxy();
+proxy.setHttpProxy("myhttpproxy:3337");
+capabilities.setCapability("proxy", proxy);
+
+// Add ChromeDriver-specific capabilities through ChromeOptions.
+ChromeOptions <b>options</b> = new ChromeOptions();
+<b>options</b>.addExtensions(new File("/path/to/extension.crx"));
+capabilities.setCapability(ChromeOptions.CAPABILITY, <b>options</b>);
+ChromeDriver driver = new ChromeDriver(capabilities);</pre>
+
+<h4><a name="TOC-Using-DesiredCapabilities-directly"></a>Using DesiredCapabilities directly</h4>
+
+<p>The <code>ChromeOptions</code> class uses <code>DesiredCapabilities</code> underneath. To use <code>DesiredCapabilities</code> directly, you need to know the name of the capability and the type of value it takes. See the full list further below.</p>
+
+<h6><a name="TOC-Java"></a>Java</h6>
+
+<pre>Map&lt;String, Object&gt; chromeOptions = new Map&lt;String, Object&gt;();
+chromeOptions.put("binary", "/usr/lib/chromium-browser/chromium-browser");
+DesiredCapabilities capabilities = DesiredCapabilities.<b>chrome</b>();
+capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+WebDriver driver = new ChromeDriver(capabilities);</pre>
+
+<h6><a name="TOC-Ruby"></a>Ruby</h6>
+
+<pre>caps = Selenium::WebDriver::Remote::Capabilities.<b>chrome</b>("chromeOptions" =&gt; {"args" =&gt; [ "--disable-web-security" ]})
+driver = Selenium::WebDriver.for :remote, url: 'http://localhost:4444/wd/hub' desired_capabilities: caps</pre>
+
+<h4><a name="TOC-Common-use-cases"></a>Common use cases</h4>
+
+<h6><a name="TOC-Use-custom-profile-also-called-user-data-directory-"></a>Use custom profile (also called user data directory)</h6>
+By default, ChromeDriver will create a new temporary profile for each session. At times you may want to set special preferences or just use a custom profile altogether. If the former, you can use the '<b>chrome</b>.prefs' capability (described later below) to specify preferences that will be applied after <b>Chrome</b> starts. If the latter, you can use the <code>user-data-dir</code> <b>Chrome</b> command-line switch to tell <b>Chrome</b> which profile to use:
+
+<pre>ChromeOptions <b>options</b> = new ChromeOptions();
+<b>options</b>.addArguments("user-data-dir=/path/to/your/custom/profile");</pre>
+
+<p>You can create your own custom profile by just running <b>Chrome</b> (on the command-line or through ChromeDriver) with the <code>user-data-dir</code> switch set to some new directory. If the path doesn't exist, <b>Chrome</b> will create a new profile in the specified location. You can then modify the profile settings as desired, and ChromeDriver can use the profile in the future. Open <u><b>chrome</b>://version</u> in the browser to see what profile <b>Chrome</b> is using.</p>
+
+<h6><a name="TOC-Start-Chrome-maximized"></a>Start <b>Chrome</b> maximized</h6>
+
+<pre>ChromeOptions <b>options</b> = new ChromeOptions();
+<b>options</b>.addArguments("start-maximized");</pre>
+
+<h6><a name="TOC-Using-a-Chrome-executable-in-a-non-standard-location"></a>Using a <b>Chrome</b> executable in a non-standard location</h6>
+
+<pre>ChromeOptions <b>options</b> = new ChromeOptions();
+<b>options</b>.setBinary("/path/to/other/<b>chrome</b>/binary");</pre>
+
+<h6><a name="TOC-Set-a-Chrome-preference"></a>Set a <b>Chrome</b> preference</h6>
+
+<pre>ChromeOptions <b>options</b> = new ChromeOptions();
+Map&lt;String, Object&gt; prefs = new HashMap&lt;String, Object&gt;();
+prefs.put("profile.default_content_settings.popups", 0);
+<b>options</b>.setExperimentalOption("prefs", prefs);</pre>
+
+<h4><a name="TOC-List-of-recognized-capabilities"></a>List of recognized capabilities</h4>
+
+<p>This is a list of all the WebDriver-standard capabilities that ChromeDriver supports:</p>
+
+<h5><a name="TOC-Proxy-object"></a><code>Proxy</code> object</h5>
+
+<p>See <a href="http://code.google.com/p/selenium/wiki/DesiredCapabilities#Proxy_JSON_Object">http://code.google.com/p/selenium/wiki/DesiredCapabilities#Proxy_JSON_Object</a></p>
+
+<h5><a name="TOC-loggingPrefs-object"></a><code>loggingPrefs</code> object</h5>
+
+<p>See <a href="https://code.google.com/p/selenium/wiki/DesiredCapabilities#JSON_object">https://code.google.com/p/selenium/wiki/DesiredCapabilities#JSON_object </a></p>
+
+<h5><a name="TOC-chromeOptions-object"></a><code>chromeOptions</code> object</h5>
+This is a list of all the <b>Chrome</b>-specific desired capabilities, which all are under the <code>chromeOptions</code> dictionary.&nbsp; <p>If possible, use the <code>ChromeOptions</code> class instead of specifying these directly.</p>
+
+<p><b> Name</b>
+
+  <br><b>Type</b>
+
+  <br><b>Default </b>
+
+  <br><b>Description </b></p>
+
+<p><code>args </code>
+
+  <br>list of strings&nbsp; <br>List of command-line arguments to use when starting <b>Chrome</b>. Arguments with an associated value should be separated by a '=' sign (e.g., ['start-maximized', 'user-data-dir=/tmp/temp_profile']). See <a href="http://peter.sh/experiments/chromium-command-line-switches/">here</a> for a list of <b>Chrome</b> arguments.</p>
+
+<p><code>binary</code>
+
+  <br>string&nbsp; <br>Path to the <b>Chrome</b> executable to use (on Mac OS X, this should be the actual binary, not just the app. e.g., '/Applications/Google <b>Chrome</b>.app/Contents/MacOS/Google <b>Chrome</b>')</p>
+
+<p><code>extensions</code>
+
+  <br>list of strings&nbsp; <br>A list of <b>Chrome</b> extensions to install on startup. Each item in the list should be a base-64 encoded packed <b>Chrome</b> extension (.crx)</p>
+
+<p><code>localState</code>
+
+  <br>dictionary
+
+  <br>A dictionary with each entry consisting of the name of the preference and its value. These preferences are applied to the Local State file in the user data folder.</p>
+
+<p><code>prefs</code>
+
+  <br>dictionary
+
+  <br>A dictionary with each entry consisting of the name of the preference and its value. These preferences are only applied to the user profile in use. See the 'Preferences' file in <b>Chrome</b>'s user data directory for examples.</p>
+
+<p><code>detach</code>
+
+  <br>boolean
+
+  <br>false&nbsp; <br>If false, <b>Chrome</b> will be quit when ChromeDriver is killed, regardless of whether the session is quit. If true, <b>Chrome</b> will only be quit if the session is quit (or closed). Note, if true, and the session is not quit, ChromeDriver cannot clean up the temporary user data directory that the running <b>Chrome</b> instance is using.</p>
+
+<p><code>debuggerAddress</code>
+
+  <br>string&nbsp; <br>An address of a <b>Chrome</b> debugger server to connect to, in the form of &lt;hostname/ip:port&gt;, e.g. '127.0.0.1:38947'</p>
+
+<p><code>excludeSwitches</code>
+
+  <br>list of strings&nbsp; <br>List of <b>Chrome</b> command line switches to exclude that ChromeDriver by default passes when starting <b>Chrome</b>.&nbsp; Do not prefix switches with --.</p>
+
+<p><code>minidumpPath </code>
+
+  <br>string&nbsp; <br>Directory to store <b>Chrome</b> minidumps . (Supported only on Linux.)</p>
+
+<p><code>mobileEmulation</code>
+
+  <br>dictionary
+
+  <br>A dictionary with either a value for “deviceName,” or values for “deviceMetrics” and “userAgent.” Refer to Mobile Emulation for more information.</p>
+
+<p><code>perfLoggingPrefs</code>
+
+  <br>dictionary
+
+  <br> An optional dictionary that specifies performance logging preferences. See below for more information.</p>
+
+<p>windowTypes
+  <br> list of strings
+
+  <br>A list of window types that will appear in the list of window handles. For access to &lt;webview&gt; elements, include "webview" in this list.</p>
+
+<h4><a name="TOC-perfLoggingPrefs-object"></a><code>perfLoggingPrefs</code> object</h4>
+
+<p>The perfLoggingPrefs dictionary has the following format (all keys are optional):</p>
+
+<p>Name
+  <br>Type
+
+  <br>Default 
+
+  <br>Description </p>
+
+<p><code>enableNetwork</code>
+
+  <br>boolean
+
+  <br>true
+
+  <br>Whether or not to collect events from Network domain.</p>
+
+<p><code>enablePage</code>
+
+  <br>boolean
+
+  <br>true
+
+  <br>Whether or not to collect events from Page domain.</p>
+
+<p><code>enableTimeline</code>
+
+  <br>boolean
+
+  <br>true (false if tracing is enabled)
+
+  <br>Whether or not to collect events from Timeline domain. Note: when tracing is enabled, Timeline domain is implicitly disabled, unless enableTimeline is explicitly set to true.</p>
+
+<p><code>tracingCategories</code>
+
+  <br>string
+
+  <br>(empty)
+
+  <br>A comma-separated string of <b>Chrome</b> tracing categories for which trace events should be collected. An unspecified or empty string disables tracing.</p>
+
+<p><code>bufferUsageReportingInterval</code>
+
+  <br>positive integer
+
+  <br>1000
+
+  <br>The requested number of milliseconds between DevTools trace buffer usage events. For example, if 1000, then once per second, DevTools will report how full the trace buffer is. If a report indicates the buffer usage is 100%, a warning will be issued.</p>
+
+<h5><a name="TOC-Returned-Capabilities"></a>Returned Capabilities</h5>
+
+<p>This is a list of all the <b>Chrome</b>-specific returned capabilities. (i.e., what ChromeDriver returns when you create a new session)</p>
+
+<p><b>Name</b>
+
+  <br><b>Type </b>
+
+  <br><b>Description </b></p>
+
+<p><code><b>chrome</b>.chromedriverVersion</code>
+
+  <br>string&nbsp; <br>version of ChromeDriver </p>
+
+<p><code>userDataDir</code>
+
+  <br>string&nbsp; <br>path to user data directory that <b>Chrome</b> is using; note, this is inside a '<b>chrome</b>' dictionary</p>
+
+<h4><a name="TOC-ChromeDriver-server-command-line-arguments"></a>ChromeDriver server command line arguments</h4>
+
+<p>Run <code>chromedriver</code><code> --help </code>to see command line arguments for your version.</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(6081007,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;38329ae9-5b3f-e111-9590-842b2b196315&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./Chrome Capabilities &amp; ChromeOptions_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./Chrome Capabilities &amp; ChromeOptions_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/zhang-pengcheng/" target="_blank"><img src="./Chrome Capabilities &amp; ChromeOptions_files/sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/zhang-pengcheng/">aprial</a><br>
+            <a href="http://home.cnblogs.com/u/zhang-pengcheng/followees">关注 - 3</a><br>
+            <a href="http://home.cnblogs.com/u/zhang-pengcheng/followers">粉丝 - 0</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;38329ae9-5b3f-e111-9590-842b2b196315&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(6081007,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(6081007,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/zhang-pengcheng/p/6080714.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/zhang-pengcheng/p/6080714.html" title="发布于2016-11-19 15:50">scrapy</a><br><a href="http://www.cnblogs.com/zhang-pengcheng/p/6082105.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/zhang-pengcheng/p/6082105.html" title="发布于2016-11-20 09:18">转：js中javascript:void(0) 真正含义</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2016-11-19 17:21</span> <a href="http://www.cnblogs.com/zhang-pengcheng/">aprial</a> 阅读(<span id="post_view_count">475</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=6081007" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/zhang-pengcheng/p/6081007.html#" onclick="AddToWz(6081007);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=110473,cb_entryId=6081007,cb_blogApp=currentBlogApp,cb_blogUserGuid='38329ae9-5b3f-e111-9590-842b2b196315',cb_entryCreatedDate='2016/11/19 17:21:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/zhang-pengcheng/p/6081007.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/zhang-pengcheng/p/6081007.html#top">返回顶部</a></div>
+<div id="comment_form_container"><script type="text/javascript" src="./Chrome Capabilities &amp; ChromeOptions_files/mention.js.下载"></script>
+<div id="commentform_title">发表评论</div>
+<span id="tip_comment" style="color:Red"></span>
+<p>
+昵称：<input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50" value="tny_leyon">
+</p>
+<div class="commentbox_main">
+<div class="commentbox_title">
+<div class="commentbox_title_left">评论内容：</div>
+<div class="commentbox_title_right">
+<img id="ubb_quote" class="comment_icon" src="./Chrome Capabilities &amp; ChromeOptions_files/quote.gif" alt="引用" title="添加引用" onclick="insertUBB(&#39;tbCommentBody&#39;,&#39;quote&#39;)">
+<img id="ubb_bold" class="comment_icon" src="./Chrome Capabilities &amp; ChromeOptions_files/b.png" alt="粗体" title="添加粗体" onclick="insertUBB(&#39;tbCommentBody&#39;,&#39;b&#39;)">
+<img id="ubb_url" class="comment_icon" src="./Chrome Capabilities &amp; ChromeOptions_files/lk.png" alt="链接" title="添加链接" onclick="insertUbbUrl(&#39;tbCommentBody&#39;)">
+<img id="ubb_indent" class="comment_icon" src="./Chrome Capabilities &amp; ChromeOptions_files/indent.png" alt="缩进" title="添加首行缩进" onclick="insertIndent(&#39;tbCommentBody&#39;)">
+<img id="ubb_code" class="comment_icon" src="./Chrome Capabilities &amp; ChromeOptions_files/InsertCode.gif" alt="代码" title="添加代码" onclick="insertUbbCode()">
+<img id="ubb_img" class="comment_icon" src="./Chrome Capabilities &amp; ChromeOptions_files/img.gif" alt="图片" title="上传图片" onclick="OpenImageUploadWindow();">
+</div>
+</div>
+<div class="clear"></div>
+<textarea id="tbCommentBody" class="comment_textarea"></textarea>
+</div>
+<p id="commentbox_opt">
+<input id="btn_comment_submit" type="button" class="comment_btn" value="提交评论">
+<span id="span_comment_canceledit" style="display:none"><a href="javascript:void(0);" onclick="return CancelCommentEdit()">不改了</a></span>
+<a href="javascript:void(0);" onclick="return logout();">退出</a>
+        <a id="commentbox_opt_sub" href="javascript:void(0);" title="订阅后有新评论时会邮件通知您" onclick="commentManager.Subscribe()">订阅评论</a>
+</p>
+<div id="tip_comment2" style="color:Red"></div>
+<p>
+[Ctrl+Enter快捷键提交]
+</p>
+<div style="display:none">
+<span id="comment_edit_id"></span><span id="span_parentcomment_id"></span>
+<span id="span_parent_id"></span>
+<span id="span_comment_replyto"></span>
+<span id="span_comment_posted"></span>
+</div>
+</div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="https://www.grapecity.com.cn/developer/spreadjs?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=SpreadJS&amp;utm_campaign=community" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-T2-Spread&#39;)">【前端】SpreadJS表格控件，可嵌入应用开发的在线Excel</a><br><a href="https://cloud.tencent.com/developer/labs?fromSource=gwzcw.1087957.1087957.1087957" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-T2 - 腾讯云&#39;)">【推荐】如何快速搭建人工智能应用？</a><br><a href="https://cloud.tencent.com/developer/salon/activity-1078?fromSource=gwzcw.1110771.1110771.1110771" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-T2-AI&#39;)">【活动】AI技术全面场景化落地实践</a><br><a href="http://challenge.xfyun.cn/?ch=bk" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-xfyun&#39;)">【大赛】2018首届“顶天立地”AI开发者大赛</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="https://cloud.tencent.com/act/campus?fromSource=gwzcw.1087959.1087959.1087959" target="_blank"><img width="300" height="250" src="./Chrome Capabilities &amp; ChromeOptions_files/24442-20180710085714894-1703644023.jpg" alt="腾讯云0710" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;C1&#39;);"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="https://news.cnblogs.com/n/602990/" target="_blank">微软OneDrive安卓APP获更新：新增指纹锁 多项改进</a><br> ·  <a href="https://news.cnblogs.com/n/602988/" target="_blank">硕士办网站招水军半年获利220万元 平台与水军二八分成</a><br> ·  <a href="https://news.cnblogs.com/n/602987/" target="_blank">特斯拉推最新生活方式产品：1500美元冲浪板</a><br> ·  <a href="https://news.cnblogs.com/n/602986/" target="_blank">银隆产业园布局之惑 资金链紧绷惹风波</a><br> ·  <a href="https://news.cnblogs.com/n/602985/" target="_blank">Twitter高管解读财报：中国出口市场广告需求强劲</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="http://click.aliyun.com/m/9667/" target="_blank"><img src="./Chrome Capabilities &amp; ChromeOptions_files/TB1iQKbhqmWBuNjy1XaXXXCbXXa-468-60.jpg" alt="" style="width: 468px; height: 60px;"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/602903/" target="_blank">历史转折中的“杭派工程师”</a><br> ·  <a href="http://kb.cnblogs.com/page/602573/" target="_blank">如何提高代码质量？</a><br> ·  <a href="http://kb.cnblogs.com/page/602486/" target="_blank">在腾讯的八年，我的职业思考</a><br> ·  <a href="http://kb.cnblogs.com/page/602163/" target="_blank">为什么我离开了管理岗位</a><br> ·  <a href="http://kb.cnblogs.com/page/602053/" target="_blank">那些让人睡不着觉的bug，你有没有遭遇过？</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/zhang-pengcheng/">aprial</a><br>园龄：<a href="https://home.cnblogs.com/u/zhang-pengcheng/" title="入园时间：2012-01-15">6年6个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/zhang-pengcheng/followers/">0</a><br>关注：<a href="https://home.cnblogs.com/u/zhang-pengcheng/followees/">3</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;38329ae9-5b3f-e111-9590-842b2b196315&#39;)">+加关注</a></div><script>getFollowStatus('38329ae9-5b3f-e111-9590-842b2b196315')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/06/01&#39;);return false;">&lt;</a></td><td align="center">2018年7月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/08/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">24</td><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td class="CalWeekendDay" align="center">7</td></tr><tr><td class="CalWeekendDay" align="center">8</td><td align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalWeekendDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td class="CalWeekendDay" align="center">28</td></tr><tr><td class="CalTodayDay" align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/zhang-pengcheng/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/zhang-pengcheng/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/zhang-pengcheng/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/zhang-pengcheng/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/zhang-pengcheng/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" onclick="this.blur();WarpClass(&#39;itemListLink&#39;, &#39;itemListLin_con&#39;);return false;" href="https://www.cnblogs.com/zhang-pengcheng/p/6081007.html#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_recentposts" class="sidebar-block">
+<div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/zhang-pengcheng/p/9206462.html">1. Xcode 9安装</a></li><li><a href="http://www.cnblogs.com/zhang-pengcheng/p/8454855.html">2. 使用批处理方式从svn 检出DEMO</a></li><li><a href="http://www.cnblogs.com/zhang-pengcheng/p/8052181.html">3. PIP安装时报The repository located at pypi.douban.com is not a trusted or secure host and is being ignore</a></li><li><a href="http://www.cnblogs.com/zhang-pengcheng/p/6891856.html">4. 一个TCP报文段的数据部分最多为多少个字节，为什么</a></li><li><a href="http://www.cnblogs.com/zhang-pengcheng/p/6885555.html">5. Makefile常用调试方法</a></li><li><a href="http://www.cnblogs.com/zhang-pengcheng/p/6885527.html">6. REDIS</a></li><li><a href="http://www.cnblogs.com/zhang-pengcheng/p/6881163.html">7. lspci 虚拟机网卡对应关系</a></li><li><a href="http://www.cnblogs.com/zhang-pengcheng/p/6881109.html">8. vmware安装ubuntu " Intel VT-x 处于禁用状态"</a></li><li><a href="http://www.cnblogs.com/zhang-pengcheng/p/6880521.html">9. win10远程桌面配置</a></li><li><a href="http://www.cnblogs.com/zhang-pengcheng/p/6880287.html">10. Win10如何彻底禁用小娜？彻底禁用小娜的方法</a></li>
+</ul>
+</div>
+</div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/zhang-pengcheng/tag/WIN10/">WIN10</a>(8)</li><li><a href="http://www.cnblogs.com/zhang-pengcheng/tag/python/">python</a>(2)</li><li><a href="http://www.cnblogs.com/zhang-pengcheng/tag/matlab/">matlab</a>(1)</li><li><a href="http://www.cnblogs.com/zhang-pengcheng/tag/wxpython/">wxpython</a>(1)</li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(12)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="https://www.cnblogs.com/zhang-pengcheng/category/578032.html">BASH SHELL(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="https://www.cnblogs.com/zhang-pengcheng/category/578033.html">GDB</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="https://www.cnblogs.com/zhang-pengcheng/category/578036.html">MODEL</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="https://www.cnblogs.com/zhang-pengcheng/category/578035.html">OFFICE</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="https://www.cnblogs.com/zhang-pengcheng/category/578029.html">OS(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="https://www.cnblogs.com/zhang-pengcheng/category/580226.html">OS-LINUX(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="https://www.cnblogs.com/zhang-pengcheng/category/602861.html">other(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="https://www.cnblogs.com/zhang-pengcheng/category/594613.html">PHP(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="https://www.cnblogs.com/zhang-pengcheng/category/578030.html">PYTHON(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="https://www.cnblogs.com/zhang-pengcheng/category/578034.html">VIM</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="https://www.cnblogs.com/zhang-pengcheng/category/578031.html">WXPYTHON</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/zhang-pengcheng/p/4553672.html">1. VCForPython27.msi安装后， 还显示error: Unable to find vcvarsall.bat(5789)</a></li><li><a href="https://www.cnblogs.com/zhang-pengcheng/p/6082326.html">2. selenium.common.exceptions.WebDriverException: Message: 'geckodriver' executable needs to be in PATH.(2425)</a></li><li><a href="https://www.cnblogs.com/zhang-pengcheng/p/4294930.html">3. python xpath 基本用法(2419)</a></li><li><a href="https://www.cnblogs.com/zhang-pengcheng/p/4004821.html">4. PHP命令行执行程序php.exe使用及常用参数(2013)</a></li><li><a href="https://www.cnblogs.com/zhang-pengcheng/p/5040259.html">5. webdriver函数(1249)</a></li></ul></div>
+</div>
+</div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2018 aprial
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>
