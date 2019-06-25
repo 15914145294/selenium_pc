@@ -1,5 +1,7 @@
 # encoding:utf-8
 
+import six
+
 from collections import OrderedDict
 from collections import MutableMapping
 from threading import RLock
@@ -8,11 +10,11 @@ _Null = object()
 
 
 def iterkeys(d, **kw):
-	return d.iterkeys(**kw)
+	return six.iterkeys(d,**kw)
 
 
 def itervalues(d, **kw):
-	return d.itervalues(**kw)
+	return six.itervalues(d,**kw)
 
 
 class RecentlyUsedContainer(MutableMapping):
