@@ -57,3 +57,57 @@ expected_conditions:
   staleness_of
 
 """
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import ElementNotVisibleException
+from selenium.webdriver.support import expected_conditions as EC
+
+
+# driver = webdriver.Chrome()
+# driver.implicitly_wait(10)
+
+
+def wait_element_is_disappear(driver, by):
+	"""
+	wait for elment to disappear
+	:param driver:
+	:param by: 传入参数是元组类型的locator 如：(By.ID,"KW")
+	:return:True or False
+	"""
+	flag = None
+	try:
+		is_disappeared = WebDriverWait(driver, 30, 0.5, (ElementNotVisibleException)). \
+			until_not(lambda x: x.find_element(*by).is_displayed())
+		if not is_disappeared:
+			flag = True
+			return flag
+	except Exception as e:
+		flag = False
+	return flag
+
+
+def wait_element_is_appear(driver, by):
+	flag = None
+	try:
+		is_appeared = WebDriverWait(driver, 30, 0.5, (ElementNotVisibleException)). \
+			until(lambda x: x.find_element(*by))
+		if is_appeared:
+			flag = True
+		return flag
+	except Exception as e:
+		flag = False
+	return flag
+
+
+def wait_element_clickable(driver, by):
+	flag = None
+	try:
+		boolean = WebDriverWait(driver, 30, 0.5). \
+			until(EC.element_to_be_clickable(by))
+		if boolean:
+			flag = True
+		return flag
+	except Exception as e:
+		flag = False
+	return flag
