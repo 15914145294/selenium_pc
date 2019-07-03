@@ -193,6 +193,14 @@ class BasePage(object):
         Maximize current browser window
         '''
         self.driver.maximize_window()
+        
+    # 执行js脚本
+    def execute(self, js, *args):
+        self.driver.execute_script(js, *args)
+
+    # 移动到指定元素
+    def move_to(self, element):
+        ActionChains(self.driver).move_to_element(element).perform()
 
     def back(self):
         '''
