@@ -106,4 +106,14 @@ and	与	price>9.00 and price<9.90	如果 price 是 9.80，则返回 true。如�
 
 mod	计算除法的余数	5 mod 2	1
 
+# element =driver.find_element_by_xpath("//input[@id='kw']/preceding-sibling::span")
+# element =driver.find_element_by_xpath("//input[@id='kw']/parent::*/parent::*")
+# elements =driver.find_elements_by_xpath("//input[@id='kw']/ancestor::*")
+element =driver.find_element_by_xpath("//*[@id='form']/")
+print(element)
+# for x in element:
+# 	print(x.tag_name)
+# driver.find_element_by_xpath("//*[@id='su']").click()
+# driver.find_element_by_xpath("//*[contains(text(),'hao123')]").click()
+
 """
