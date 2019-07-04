@@ -18,7 +18,9 @@ class BasePage(object):
         if browser == "firefox" or browser == "ff":
             driver = webdriver.Firefox()
         elif browser == "chrome":
-            driver = webdriver.Chrome()
+            option = webdriver.ChromeOptions()
+            option.add_argument('disable-infobars')
+            driver = webdriver.Chrome(chrome_options=option)
         elif browser == "internet explorer" or browser == "ie":
             driver = webdriver.Ie()
         elif browser == "opera":
